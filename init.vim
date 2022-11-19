@@ -1,17 +1,21 @@
 :set title							" adds title to the nvim window
 
-:set undofile						" adds undo action even after file is closed and opened
+:set undofile						" adds undo action even after exit
 
 :set number							" add line numbers
 :set relativenumber					" add relative line numbers
 
-:set list listchars=nbsp:¬,tab:··,trail:·,extends:>					" sets whitespaces as »·
+:set list listchars=nbsp:¬,tab:··,trail:·,extends:>
+" sets whitespaces as »·
 :set tabstop=4						" number of column occupied by a tab
 :set softtabstop=4					" uses mix of spaces and tabs
 :set shiftwidth=4					" width for autoindents
 :set autoindent						" enable autoindent
 :set smartindent
 :set textwidth=79					" text wrap width
+:set colorcolumn=80					" sets color when beyond 80 characters mark
+:highlight ColorColumn ctermbg=9
+" sets color to bright red at colorcolumn number
 ":set expandtab						" converts tab to whitespace
 
 :set mouse=v						" middle-click paste with
@@ -25,7 +29,8 @@
 :set clipboard=unnamedplus			" use system clipboard
 :set cursorline						" highlight current cursorline
 
-:set guifont=JetBrains\ Mono:h10	" set font to JetBrains Mono, a open sorce font
+:set guifont=JetBrains\ Mono:h10
+" set font to JetBrains Mono, a open sorce font
 
 :set splitright						" set new window to split to right
 :set splitbelow						" set new window to split to below
@@ -38,7 +43,8 @@ if !has('gui_running')
 endif
 " enable color support
 :set termguicolors
-:colorscheme nord					" set colorscheme to industry/murphy/pablo/torte/nord
+:colorscheme nord
+" set colorscheme to industry/murphy/pablo/torte/nord
 " You can also add other themes (like nord) by searching for themes for 
 " vim, github for their vim file... and then putting the vim file in the
 " ~\AppData\Local\nvim\colors and you can search for them in nvim now.
@@ -50,17 +56,25 @@ function! AdjustFontSize(amount)
 	:execute "GuiFont! JetBrains Mono:h" . s:fontsize
 endfunction
 
-noremap <C-ScrollWheelUp> :call AdjustFontSize(1)<CR>					" increase adjust font size in normal mode
-noremap <C-ScrollWheelDown> :call AdjustFontSize(-1)<CR>				" decrease font size in normal mode
-noremap <C-b> <Esc> :Lex <CR> :vertical resize 30 <CR>					" Lex, vim's pre-built nerdTree type file explorer normal mode
-inoremap <C-p> <Esc> :call AdjustFontSize(1) <CR>						" increase adjust font size in insert mode
-inoremap <C-l> <Esc> :call AdjustFontSize(-1) <CR>						" decrease font size insert mode
-inoremap <C-b> <Esc> :Lex <CR> :vertical resize 30 <CR>					" Lex, vim's pre-built nerdTree type file explorer insert mode
+noremap <C-ScrollWheelUp> :call AdjustFontSize(1)<CR>
+" increase adjust font size in normal mode
+noremap <C-ScrollWheelDown> :call AdjustFontSize(-1)<CR>
+" decrease font size in normal mode
+noremap <C-b> <Esc> :Lex <CR> :vertical resize 30 <CR>
+" Lex, vim's pre-built nerdTree type file explorer normal mode
+inoremap <C-p> <Esc> :call AdjustFontSize(1) <CR>
+" increase adjust font size in insert mode
+inoremap <C-l> <Esc> :call AdjustFontSize(-1) <CR>
+" decrease font size insert mode
+inoremap <C-b> <Esc> :Lex <CR> :vertical resize 30 <CR>
+" Lex, vim's pre-built nerdTree type file explorer insert mode
 
 :set spell							" enable spellcheck
-map <F8> :setlocal spell! spelllang=en<CR>								" sets spellchecking with F8 key and runs with `z=` when cursor above word
+map <F8> :setlocal spell! spelllang=en<CR>
+" sets spellchecking with F8 key and runs with `z=` when cursor above word
 
-nnoremap <silent> <F5> :%s/\s\+$//<CR>									" remove trailing whitespace in a file
+nnoremap <silent> <F5> :%s/\s\+$//<CR>
+" remove trailing whitespace in a file
 
 inoremap <C-BS> <C-w>
 " changes the default ctrl-w to delete last word the ctrl-backspace
@@ -104,3 +118,11 @@ nnoremap ,html :-1read ~\AppData\Local\nvim\snippets\skeleton.html<CR>4jf>a
 " executes the command by pressing carriage return or enter. The final 4jf>a is
 " a carefully designed normal mode command to position the cursor directly in
 " the title of the html snippet.
+"
+nnoremap <C-t> :sp <CR> :terminal <CR> :resize -10 <CR><C-w>k" 
+" Note: If there is space between `<CR>` and `<C-w>w` command, it does not do
+" the specified operation...
+" TIP: Try to avoid spaces in VIM remaps.
+" 
+" Run this terminal command automatically with netrw...
+autocmd VimEnter * :exe "normal \<C-b>\<C-w>w\<C-t>"
