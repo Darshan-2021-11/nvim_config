@@ -31,6 +31,12 @@
 :set splitbelow						" set new window to split to below
 
 :syntax on							" syntax highlighting
+
+" enable color themes
+if !has('gui_running')
+	set t_Co=256
+endif
+" enable color support
 :set termguicolors
 :colorscheme nord					" set colorscheme to industry/murphy/pablo/torte/nord
 " You can also add other themes (like nord) by searching for themes for 
