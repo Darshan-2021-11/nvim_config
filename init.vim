@@ -7,6 +7,7 @@
 
 :set list listchars=nbsp:¬,tab:··,trail:·,extends:>
 " sets whitespaces as »·
+:set wrap							" enables text wrap in opened files
 :set tabstop=4						" number of column occupied by a tab
 :set softtabstop=4					" uses mix of spaces and tabs
 :set shiftwidth=4					" width for autoindents
