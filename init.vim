@@ -90,7 +90,7 @@ let g:netrw_list_hide=netrw_gitignore#Hide()
 "
 " 4. Snippets
 " Read an empty HTML snippet template and move cursor to the title
-nnoremap ,html :-1read ~\AppData\Local\nvim\snippets\.skeleton.html<CR>4jf>a
+nnoremap ,html :-1read ~\AppData\Local\nvim\snippets\skeleton.html<CR>4jf>a
 " It forwards the `,html` typed to run the following command `:-1read
 " ~\Appdata\Local\nvim\snippets\.skeleton.html (this is where the snippet of
 " the html file is stored, -1 is there so that the cursor does not change its
