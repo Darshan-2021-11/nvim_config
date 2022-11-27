@@ -50,6 +50,9 @@ endif
 " vim, github for their vim file... and then putting the vim file in the
 " ~\AppData\Local\nvim\colors and you can search for them in nvim now.
 " Here,	~:`\User\Username` folder in Windows or `/home` in Linux.
+" 
+" The default plugins and themes and all other things are stored in "C:/Program
+" Files/Neovim/share/nvim/runtime/"
 
 let s:fontsize = 12
 function! AdjustFontSize(amount)
@@ -57,17 +60,17 @@ function! AdjustFontSize(amount)
 	:execute "GuiFont! JetBrains Mono:h" . s:fontsize
 endfunction
 
-noremap <C-ScrollWheelUp> :call AdjustFontSize(1)<CR>
+noremap <C-ScrollWheelUp>:call AdjustFontSize(1)<CR>
 " increase adjust font size in normal mode
-noremap <C-ScrollWheelDown> :call AdjustFontSize(-1)<CR>
+noremap <C-ScrollWheelDown>:call AdjustFontSize(-1)<CR>
 " decrease font size in normal mode
-noremap <C-b> <Esc> :Lex <CR> :vertical resize 30 <CR>
+noremap <C-b> <Esc>:Lex <CR>:vertical resize 30<CR>
 " Lex, vim's pre-built nerdTree type file explorer normal mode
-inoremap <C-p> <Esc> :call AdjustFontSize(1) <CR>
+inoremap <C-p> <Esc>:call AdjustFontSize(1)<CR>
 " increase adjust font size in insert mode
-inoremap <C-l> <Esc> :call AdjustFontSize(-1) <CR>
+inoremap <C-l> <Esc>:call AdjustFontSize(-1)<CR>
 " decrease font size insert mode
-inoremap <C-b> <Esc> :Lex <CR> :vertical resize 30 <CR>
+inoremap <C-b> <Esc>:Lex <CR>:vertical resize 30<CR>
 " Lex, vim's pre-built nerdTree type file explorer insert mode
 
 :set spell							" enable spellcheck
@@ -120,7 +123,7 @@ nnoremap ,html :-1read ~\AppData\Local\nvim\snippets\skeleton.html<CR>4jf>a
 " a carefully designed normal mode command to position the cursor directly in
 " the title of the html snippet.
 "
-nnoremap <C-t> :sp <CR> :terminal <CR> :resize -10 <CR><C-w>k" 
+nnoremap <C-t> :sp<CR>:terminal<CR>:resize\ -10<CR><C-w>k
 " Note: If there is space between `<CR>` and `<C-w>w` command, it does not do
 " the specified operation...
 " TIP: Try to avoid spaces in VIM remaps.
